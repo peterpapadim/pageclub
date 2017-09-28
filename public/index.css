@@ -1,0 +1,100 @@
+.home-container {
+  /*text-align: center;*/
+  height:100vh;
+  /*background: #ffffe6;*/
+}
+
+.home-login-join {
+  text-align: center;
+  height: 100%;
+}
+
+.login-join {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#login {
+  margin-right: 1%;
+}
+
+.main-app {
+  height:100vh;
+}
+
+
+/* customize bootstrap nav bar: */
+
+
+.dropdown-item {
+  text-align: center!important;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: #343a40!important;
+}
+
+input {
+  text-align: center;
+}
+
+.form-inline {
+  justify-content: center;
+}
+
+.nav-link {
+  text-align: center;
+}
+
+.nav-link:hover, .nav-link:focus, .nav-link:active {
+  color: white!important;
+}
+
+/* customize bootstrap nav bar: */
+
+
+
+.home-window {
+  height: 90%;
+}
+
+#login-page {
+  height:100vh;
+  padding-left: 30%;
+  padding-right: 30%;
+  text-align: center;
+}
+
+#login-form {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+#login-submit {
+  margin-right: 1%;
+}
+
+#create-account-page {
+  height:100vh;
+  padding-left: 30%;
+  padding-right: 30%;
+  text-align: center;
+}
+
+#create-account-form {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+#create-account-submit {
+  margin-right: 1%;
+}
+
+button:hover {
+  cursor: pointer;
+}
