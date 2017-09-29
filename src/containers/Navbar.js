@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { logOutUser } from '../actions/sessionActions';
@@ -31,10 +30,16 @@ class Navbar extends Component {
   }
 
   render(){
+    if(Object.keys(this.props.user).length === 0 && (!sessionStorage.user)){
+      return(
+        <div>Logging in</div>
+      )
+    }
+
     return(
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <Link className="navbar-brand" to="/">
-          Books App
+          Pageclub
         </Link>
         <button className="navbar-toggler"
                 type="button"
@@ -75,7 +80,11 @@ class Navbar extends Component {
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="false">
-                Profile
+                {
+                  Object.keys(this.props.user).length > 0 ?
+                  this.props.user.firstName :
+                  JSON.parse(sessionStorage.user).firstName
+                }
               </Link>
               <div className="dropdown-menu">
                 <Link className="dropdown-item"
@@ -120,12 +129,12 @@ class Navbar extends Component {
   }
 }
 
+function mapStateToProps(state){
+  return { user: state.user }
+}
+
 function mapDispatchToProps(dispatch){
   return bindActionCreators({ logOutUser }, dispatch)
 }
 
-export default reduxForm({
-  form: 'Search'
-})(
-  connect(null, mapDispatchToProps)(Navbar)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

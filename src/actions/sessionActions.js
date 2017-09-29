@@ -1,5 +1,7 @@
 import * as types from './actionTypes';
+import { fetchUserInfo } from './userActions'
 import SessionAdapter from '../adapters/SessionAdapter';
+
 
 export function loginSuccess() {
   return {type: types.LOG_IN_SUCCESS}
@@ -20,6 +22,7 @@ export function logInUser(credentials, history) {
       if(response.jwt !== undefined){
         sessionStorage.setItem('jwt', response.jwt);
         dispatch(loginSuccess());
+        dispatch(fetchUserInfo());
         history.push("/")
       }
       else if(response.error){
@@ -36,6 +39,7 @@ export function createAndLogInUser(credentials, history) {
       if(response.jwt !== undefined){
         sessionStorage.setItem('jwt', response.jwt);
         dispatch(loginSuccess());
+        dispatch(fetchUserInfo());
         history.push("/")
       }
       else if(response.error){
@@ -47,6 +51,7 @@ export function createAndLogInUser(credentials, history) {
 
 export function logOutUser(history) {
   sessionStorage.removeItem('jwt')
+  sessionStorage.removeItem('user')
   history.push("/")
   return {type: types.LOG_OUT_SUCCESS}
 }
