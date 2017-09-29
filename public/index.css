@@ -1,7 +1,5 @@
 .home-container {
-  /*text-align: center;*/
   height:100vh;
-  /*background: #ffffe6;*/
 }
 
 .home-login-join {
@@ -15,13 +13,79 @@
   transform: translateY(-50%);
 }
 
+
+
+
+
+
 #login {
   margin-right: 1%;
 }
 
-.main-app {
-  height:100vh;
+#home-window {
+  margin-top: 1%;
+  height: 90vh;
 }
+
+#page-window {
+  margin-top: 1%;
+  height: 90vh;
+}
+
+#navbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#top-books-container {
+  text-align: center;
+  background: lightgreen;
+}
+
+#featured-container {
+  text-align: center;
+  background: lightblue;
+}
+
+#cart-container {
+  text-align: center;
+  background: lightpink;
+}
+
+#library-container {
+  text-align: center;
+  background: lightpink;
+}
+
+#checked-out-container {
+  text-align: center;
+  background: lightblue;
+}
+
+#friends-container {
+  text-align: center;
+  background: lightgreen;
+}
+
+#account-container {
+  text-align: center;
+  /*background: lightcoral;*/
+}
+
+#search-container {
+  text-align: center;
+  background: lightsalmon;
+}
+
+#inbox-container {
+  text-align: center;
+  background: lightcyan;
+}
+
+
+
+
+
 
 
 /* customize bootstrap nav bar: */
@@ -51,13 +115,12 @@ input {
   color: white!important;
 }
 
+::-webkit-input-placeholder {
+  font-size: .7rem!important;
+}
+
 /* customize bootstrap nav bar: */
 
-
-
-.home-window {
-  height: 90%;
-}
 
 #login-page {
   height:100vh;
@@ -97,4 +160,32 @@ input {
 
 button:hover {
   cursor: pointer;
+}
+
+
+/*  Account Page:  */
+
+.card {
+  margin-top: 15%;
+}
+
+#account-edit-button {
+  margin-right: 1%;
+  color: white;
+}
+
+.modal-content, #delete-account-modal {
+  margin-top: 15%;
+  border-radius: .5rem;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+#name-edit-input {
+  font-weight: 500;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+}
+
+#delete-account-modal-cancel {
+  color: white;
 }

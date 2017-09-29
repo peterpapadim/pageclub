@@ -24,9 +24,23 @@ class Home extends Component {
             </div>
           </div>
         :
-        <div className="main-app">
-          <div id="home-navbar"><Navbar history={this.props.history}/></div>
-          <div className="home-window">This is home!</div>
+        <div className="container-fluid">
+            <div className="row" >
+              <div id="navbar" className="col-12">
+                <Navbar history={this.props.history}/>
+              </div>
+            </div>
+            <div id="home-window" className="row">
+              <div id="top-books-container" className="col-2">
+                Top Books
+              </div>
+              <div id="featured-container" className="col-8">
+                Featured
+              </div>
+              <div id="cart-container" className="col-2">
+                Cart
+              </div>
+            </div>
        </div>
         }
      </div>

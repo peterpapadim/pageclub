@@ -4,9 +4,17 @@ import Navbar from '../containers/Navbar';
 class Search extends Component {
   render(){
     return(
-      <div className="main-app">
-        <div id="home-navbar"><Navbar history={this.props.history.history}/></div>
-        <div className="home-window">You searched for {this.props.history.match.params.term}</div>
+      <div className="container-fluid">
+          <div className="row" >
+            <div id="navbar" className="col-12">
+              <Navbar history={this.props.history.history}/>
+            </div>
+          </div>
+          <div id="page-window" className="row">
+            <div id="search-container" className="col-12">
+              You searched for {this.props.history.match.params.term}
+            </div>
+          </div>
      </div>
     )
   }

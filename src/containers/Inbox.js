@@ -11,8 +11,8 @@ class Library extends Component {
             </div>
           </div>
           <div id="page-window" className="row">
-            <div id="library-container" className="col-12">
-              My Library
+            <div id="inbox-container" className="col-12">
+              Inbox
             </div>
           </div>
      </div>

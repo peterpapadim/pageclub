@@ -73,6 +73,11 @@ class Navbar extends Component {
                 Friends
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/inbox">
+                Inbox(1)
+              </Link>
+            </li>
             <li className="nav-item dropdown">
               <Link className="nav-link dropdown-toggle"
                     data-toggle="dropdown"
@@ -113,7 +118,7 @@ class Navbar extends Component {
                 onSubmit={this.onSearchSubmit} >
             <input className="form-control mr-sm-2"
                    type="text"
-                   placeholder="Book Title or User Email"
+                   placeholder="Book Title or User Email..."
                    aria-label="Search"
                    value={this.state.input}
                    onChange={this.onInputChange} />
