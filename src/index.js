@@ -16,6 +16,7 @@ import Friends from './containers/Friends';
 import Account from './containers/Account';
 import Search from './containers/Search';
 import Inbox from './containers/Inbox';
+import Cart from './containers/Cart';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
@@ -43,6 +44,9 @@ ReactDOM.render(
           )}  />
         <Route path='/inbox' component={(history) => (
             sessionStorage.jwt ? <Inbox history={history} /> : <Redirect to="/" />
+          )}  />
+        <Route path='/cart' component={(history) => (
+            sessionStorage.jwt ? <Cart history={history} /> : <Redirect to="/" />
           )}  />
         <Route path='/search-results/:term' component={(history) => (
             sessionStorage.jwt ? <Search history={history} /> : <Redirect to="/" />

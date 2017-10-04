@@ -47,7 +47,7 @@
   background: lightblue;
 }
 
-#cart-container {
+#cart-home-container {
   text-align: center;
   background: lightpink;
 }
@@ -82,9 +82,10 @@
   background: lightcyan;
 }
 
-
-
-
+#cart-container {
+  text-align: center;
+  background: LightSteelBlue;
+}
 
 
 

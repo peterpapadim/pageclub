@@ -4,6 +4,25 @@ import Navbar from '../containers/Navbar';
 
 class Home extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      windowWidth: window.innerWidth
+    }
+  }
+
+  handleResize = () => {
+    this.setState({ windowWidth: window.innerWidth })
+  }
+
+  componentDidMount(){
+    window.addEventListener('resize', this.handleResize)
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.handleResize)
+  }
+
   loginClick = () => {
     this.props.history.push("/login")
   }
@@ -13,7 +32,6 @@ class Home extends Component {
   }
 
   render(){
-
     return(
       <div className="home-container">
           {this.props.session === "ERROR" || !this.props.session ?
@@ -30,17 +48,25 @@ class Home extends Component {
                 <Navbar history={this.props.history}/>
               </div>
             </div>
-            <div id="home-window" className="row">
-              <div id="top-books-container" className="col-2">
-                Top Books
-              </div>
-              <div id="featured-container" className="col-8">
-                Featured
-              </div>
-              <div id="cart-container" className="col-2">
-                Cart
-              </div>
-            </div>
+            {
+              this.state.windowWidth > 991 ?
+                <div id="home-window" className="row">
+                  <div id="top-books-container" className="col-2">
+                    Top Books
+                  </div>
+                  <div id="featured-container" className="col-8">
+                    Featured
+                  </div>
+                  <div id="cart-home-container" className="col-2">
+                    Cart
+                  </div>
+                </div> :
+                <div id="home-window" className="row">
+                  <div id="featured-container" className="col-12">
+                    Featured
+                  </div>
+                </div>
+            }
        </div>
         }
      </div>

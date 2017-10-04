@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../containers/Navbar';
 
-class Inbox extends Component {
+class Cart extends Component {
   render(){
     return(
       <div className="container-fluid">
@@ -11,8 +11,8 @@ class Inbox extends Component {
             </div>
           </div>
           <div id="page-window" className="row">
-            <div id="inbox-container" className="col-12">
-              Inbox
+            <div id="cart-container" className="col-12">
+              Cart
             </div>
           </div>
      </div>
@@ -20,4 +20,4 @@ class Inbox extends Component {
   }
 }
 
-export default Inbox;
+export default Cart;
