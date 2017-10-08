@@ -4,12 +4,12 @@ import Navbar from '../containers/Navbar';
 
 class Home extends Component {
 
-  constructor(){
-    super();
-    this.state = {
-      windowWidth: window.innerWidth
-    }
-  }
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     windowWidth: window.innerWidth
+  //   }
+  // }
 
   handleResize = () => {
     this.setState({ windowWidth: window.innerWidth })
@@ -48,25 +48,7 @@ class Home extends Component {
                 <Navbar history={this.props.history}/>
               </div>
             </div>
-            {
-              this.state.windowWidth > 991 ?
-                <div id="home-window" className="row">
-                  <div id="top-books-container" className="col-2">
-                    Top Books
-                  </div>
-                  <div id="featured-container" className="col-8">
-                    Featured
-                  </div>
-                  <div id="cart-home-container" className="col-2">
-                    Cart
-                  </div>
-                </div> :
-                <div id="home-window" className="row">
-                  <div id="featured-container" className="col-12">
-                    Featured
-                  </div>
-                </div>
-            }
+          {this.props.history.push("/library")}
        </div>
         }
      </div>
@@ -83,3 +65,24 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps)(Home);
+
+// This and state were being used to hide componenets at a specific window width
+// {
+//   this.state.windowWidth > 991 ?
+//     <div id="home-window" className="row">
+//       <div id="top-books-container" className="col-2">
+//         Top Books
+//       </div>
+//       <div id="featured-container" className="col-8">
+//         Featured
+//       </div>
+//       <div id="cart-home-container" className="col-2">
+//         Cart
+//       </div>
+//     </div> :
+//     <div id="home-window" className="row">
+//       <div id="featured-container" className="col-12">
+//         Featured
+//       </div>
+//     </div>
+// }

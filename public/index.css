@@ -37,20 +37,20 @@
   padding-right: 0;
 }
 
-#top-books-container {
+/*#top-books-container {
   text-align: center;
   background: lightgreen;
-}
+}*/
 
-#featured-container {
+/*#featured-container {
   text-align: center;
   background: lightblue;
-}
+}*/
 
-#cart-home-container {
+/*#cart-home-container {
   text-align: center;
   background: lightpink;
-}
+}*/
 
 #library-container {
   text-align: center;
@@ -74,7 +74,7 @@
 
 #search-container {
   text-align: center;
-  background: lightsalmon;
+  /*background: lightsalmon;*/
 }
 
 #inbox-container {
@@ -189,4 +189,12 @@ button:hover {
 
 #delete-account-modal-cancel {
   color: white;
+}
+
+/* Search Results Loader */
+
+.ui.centered.inline.loader.active, .ui.centered.inline.loader.visible{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

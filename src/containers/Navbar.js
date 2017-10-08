@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { logOutUser } from '../actions/sessionActions';
+import { fetchSearchResults } from '../actions/searchActions';
 
 class Navbar extends Component {
 
@@ -25,6 +26,7 @@ class Navbar extends Component {
   onSearchSubmit = (event) => {
     event.preventDefault()
     if(this.state.input.length > 0){
+      this.props.fetchSearchResults(this.state.input)
       this.props.history.push(`/search-results/${this.state.input}`)
     }
   }
@@ -54,11 +56,6 @@ class Navbar extends Component {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/library">
                 My Library
               </Link>
@@ -75,7 +72,7 @@ class Navbar extends Component {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/cart">
-                Cart
+                Cart(2)
               </Link>
             </li>
             <li className="nav-item">
@@ -144,7 +141,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ logOutUser }, dispatch)
+  return bindActionCreators({ logOutUser, fetchSearchResults }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

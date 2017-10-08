@@ -1,4 +1,5 @@
 export default {
   session: !!sessionStorage.jwt,
-  user: {}
+  user: {},
+  searchResults: []
 }
