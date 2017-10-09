@@ -191,10 +191,33 @@ button:hover {
   color: white;
 }
 
+/* Search Results */
+
+.search-results {
+  height: 200px;
+  width: 150px;
+  padding: 5px;
+}
+
+.search-results:hover{
+  cursor: pointer;
+  border: 2px solid grey;
+}
+
 /* Search Results Loader */
 
 .ui.centered.inline.loader.active, .ui.centered.inline.loader.visible{
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* Selected Book Modal */
+
+.selected-book-modal .modal-dialog {
+  max-width: none!important;
+}
+
+.selected-book-modal .modal-header {
+  display: block;
 }
