@@ -87,6 +87,11 @@
   background: LightSteelBlue;
 }
 
+#book-container {
+  text-align: center;
+  background: LightGreen;
+}
+
 
 
 /* customize bootstrap nav bar: */

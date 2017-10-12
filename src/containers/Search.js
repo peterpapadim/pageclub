@@ -5,20 +5,27 @@ import { bindActionCreators } from 'redux';
 import { Loader } from 'semantic-ui-react';
 import SelectedBookModal from '../components/SelectedBookModal';
 import { setSelectedBook, clearSelectedBook} from '../actions/selectedActions';
+import { fetchSearchResults } from '../actions/searchActions';
 
 class Search extends Component {
 
   handleResultClick = (book) => {
     this.props.setSelectedBook(book)
+    this.props.history.history.push(`/books/${book.volumeInfo.industryIdentifiers[0].identifier}`)
   }
 
   displayResults = () => {
     return this.props.searchResults.items.map((book) => {
       if(book.volumeInfo.imageLinks){
         let imgURL = book.volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")
-        return <img className="search-results" src={imgURL} onClick={() => this.handleResultClick(book)}/>
+        return <img key={book.id} className="search-results" src={imgURL} onClick={() => this.handleResultClick(book)}/>
       }
     })
+  }
+
+  componentDidMount(){
+    this.props.fetchSearchResults(this.props.history.match.params.term)
+    this.props.clearSelectedBook()
   }
 
   render(){
@@ -35,14 +42,6 @@ class Search extends Component {
               {this.props.searchResults.length === 0 ?
                 <Loader active inline='centered' size="large"/> : this.displayResults()
               }
-            {
-              this.props.selectedBook ?
-                <SelectedBookModal
-                  clearSelectedBook={this.props.clearSelectedBook}
-                  book={this.props.selectedBook}
-                />  :
-                  null
-            }
             </div>
           </div>
      </div>
@@ -51,13 +50,16 @@ class Search extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ setSelectedBook, clearSelectedBook }, dispatch)
-}
+  return bindActionCreators({
+    fetchSearchResults,
+    setSelectedBook,
+    clearSelectedBook
+  }, dispatch
+)}
 
 function mapStateToProps(state){
   return {
     searchResults: state.searchResults,
-    selectedBook: state.selectedBook
   }
 }
 

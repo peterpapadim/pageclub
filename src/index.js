@@ -17,6 +17,7 @@ import Account from './containers/Account';
 import Search from './containers/Search';
 import Inbox from './containers/Inbox';
 import Cart from './containers/Cart';
+import Book from './containers/Book';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
@@ -50,6 +51,9 @@ ReactDOM.render(
           )}  />
         <Route path='/search-results/:term' component={(history) => (
             sessionStorage.jwt ? <Search history={history} /> : <Redirect to="/" />
+          )}  />
+        <Route path='/books/:term' component={(history) => (
+            sessionStorage.jwt ? <Book history={history} /> : <Redirect to="/" />
           )}  />
         <Route path="/" component={Home} />
       </Switch>
