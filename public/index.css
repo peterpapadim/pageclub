@@ -27,7 +27,7 @@
   height: 90vh;
 }
 
-#page-window {
+.page-window {
   margin-top: 1%;
   height: 90vh;
 }
@@ -87,10 +87,11 @@
   background: LightSteelBlue;
 }
 
-#book-container {
+/*#book-container {
   text-align: center;
   background: LightGreen;
-}
+}*/
+
 
 
 
@@ -217,12 +218,64 @@ button:hover {
   transform: translateY(-50%);
 }
 
-/* Selected Book Modal */
+/* Selected Book Page */
 
-.selected-book-modal .modal-dialog {
-  max-width: none!important;
+#book-page{
+  margin-right: 2%;
+  margin-left: 2%;
 }
 
-.selected-book-modal .modal-header {
-  display: block;
+#book-cover{
+  padding-top: 10%;
 }
+
+#back-and-cover{
+  text-align: right;
+  padding-right: 5%;
+}
+
+#back-to-results{
+  float: left;
+}
+
+#basic-book-info{
+  text-align: left;
+  padding-top: 5%;
+  padding-right: 12%;
+  font-size: 115%;
+}
+
+#basic-info{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#details-book-info{
+  padding-top: 10%;
+  padding-bottom: 5%;
+  text-align: center;
+  font-size: 115%;
+}
+
+#details-info{
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+#add-to-library-button{
+  margin-top: 5%;
+  margin-bottom: 10%;
+  text-align: center;
+}
+
+
+/*#book-cover {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}*/
+
+/*#book-details-container{
+  text-align: center;
+}*/

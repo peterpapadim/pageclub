@@ -10,7 +10,7 @@ class Cart extends Component {
               <Navbar history={this.props.history.history}/>
             </div>
           </div>
-          <div id="page-window" className="row">
+          <div className="row page-window">
             <div id="cart-container" className="col-12">
               Cart
             </div>

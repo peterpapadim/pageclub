@@ -3,14 +3,12 @@ import Navbar from '../containers/Navbar';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Loader } from 'semantic-ui-react';
-import SelectedBookModal from '../components/SelectedBookModal';
 import { setSelectedBook, clearSelectedBook} from '../actions/selectedActions';
 import { fetchSearchResults } from '../actions/searchActions';
 
 class Search extends Component {
 
   handleResultClick = (book) => {
-    this.props.setSelectedBook(book)
     this.props.history.history.push(`/books/${book.volumeInfo.industryIdentifiers[0].identifier}`)
   }
 
@@ -37,7 +35,7 @@ class Search extends Component {
               <Navbar history={this.props.history.history}/>
             </div>
           </div>
-          <div id="page-window" className="row">
+          <div className="row page-window">
             <div id="search-container" className="col-12">
               {this.props.searchResults.length === 0 ?
                 <Loader active inline='centered' size="large"/> : this.displayResults()
