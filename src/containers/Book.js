@@ -45,7 +45,10 @@ class Book extends Component {
                   <a id="back-to-results" href="search-results" onClick={this.handleBackClick}>Back to results</a><br/>
                   {
                     this.props.selectedBook ?
-                    <img id="book-cover" src={this.props.selectedBook.items[0].volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")} /> :
+                    <div id="cover-and-button">
+                      <img id="book-cover" src={this.props.selectedBook.items[0].volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")} /><br />
+                      <button id="add-to-library-button" className="btn btn-success">Add To Library</button>
+                    </div> :
                     null
                   }
                 </div>
@@ -59,7 +62,7 @@ class Book extends Component {
                             Category:  {this.props.selectedBook.items[0].volumeInfo.categories.join(", ")}<br/>
                             Publisher:  {this.props.selectedBook.items[0].volumeInfo.publisher}<br/>
                             Published Date:  {this.props.selectedBook.items[0].volumeInfo.publishedDate}<br/>
-                          Page Count:  {this.props.selectedBook.items[0].volumeInfo.pageCount}
+                            Page Count:  {this.props.selectedBook.items[0].volumeInfo.pageCount}
                         </p>
                       </div> : null
                   }
@@ -73,11 +76,6 @@ class Book extends Component {
                         {this.props.selectedBook.items[0].volumeInfo.description}
                       </div> : null
                   }
-                </div>
-              </div>
-              <div id="add-to-library-button" className="row">
-                <div className="col">
-                  <button className="btn btn-success">Add To Library</button>
                 </div>
               </div>
             </div>

@@ -221,8 +221,8 @@ button:hover {
 /* Selected Book Page */
 
 #book-page{
-  margin-right: 2%;
-  margin-left: 2%;
+  margin-right: 4%;
+  margin-left: 4%;
 }
 
 #book-cover{
@@ -265,8 +265,7 @@ button:hover {
 
 #add-to-library-button{
   margin-top: 5%;
-  margin-bottom: 10%;
-  text-align: center;
+  margin-right: 3.7%;
 }
 
 
