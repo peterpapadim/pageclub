@@ -9,7 +9,8 @@ import { fetchSearchResults } from '../actions/searchActions';
 class Search extends Component {
 
   handleResultClick = (book) => {
-    this.props.history.history.push(`/books/${book.volumeInfo.industryIdentifiers[0].identifier}`)
+    this.props.setSelectedBook(book)
+    this.props.history.history.push(`/books/${book.id}`)
   }
 
   displayResults = () => {
@@ -18,12 +19,14 @@ class Search extends Component {
         let imgURL = book.volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")
         return <img key={book.id} className="search-results" src={imgURL} onClick={() => this.handleResultClick(book)}/>
       }
+      else{
+        return <img key={book.id} className="search-results" src="" onClick={() => this.handleResultClick(book)}/>
+      }
     })
   }
 
   componentDidMount(){
     this.props.fetchSearchResults(this.props.history.match.params.term)
-    this.props.clearSelectedBook()
   }
 
   render(){
@@ -38,7 +41,8 @@ class Search extends Component {
           <div className="row page-window">
             <div id="search-container" className="col-12">
               {this.props.searchResults.length === 0 ?
-                <Loader active inline='centered' size="large"/> : this.displayResults()
+                <Loader active inline='centered' size="large"/> :
+                      this.props.searchResults.items ? this.displayResults() : <h2 className="no-search-results"> :( </h2>
               }
             </div>
           </div>

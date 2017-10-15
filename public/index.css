@@ -202,12 +202,19 @@ button:hover {
 .search-results {
   height: 200px;
   width: 150px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .search-results:hover{
   cursor: pointer;
   border: 2px solid grey;
+}
+
+.no-search-results {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
 }
 
 /* Search Results Loader */
@@ -229,8 +236,9 @@ button:hover {
   padding-top: 10%;
 }
 
+
 #back-and-cover{
-  text-align: right;
+  text-align: center;
   padding-right: 5%;
 }
 
@@ -238,10 +246,16 @@ button:hover {
   float: left;
 }
 
+#back-to-results:hover{
+  color: #394f83;
+  font-weight: bold;
+}
+
 #basic-book-info{
   text-align: left;
   padding-top: 5%;
-  padding-right: 12%;
+  padding-left: 5%;
+  padding-right: 10%;
   font-size: 115%;
 }
 
@@ -254,13 +268,14 @@ button:hover {
 #details-book-info{
   padding-top: 10%;
   padding-bottom: 5%;
-  text-align: center;
+  text-align: left;
   font-size: 115%;
 }
 
 #details-info{
-  padding-left: 15%;
-  padding-right: 15%;
+  padding: 5%;
+  margin-right: 5%;
+  background: rgba(128, 128, 128, 0.07);
 }
 
 #add-to-library-button{

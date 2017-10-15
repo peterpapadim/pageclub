@@ -9,10 +9,10 @@ export function clearSelectedBook(){
   return {type: types.CLEAR_SELECTED_BOOK }
 }
 
-export function fetchByIsbn(isbn){
+export function fetchById(id){
   return function(dispatch) {
     dispatch(clearSelectedBook())
-    return GoogleBooksAdapter.searchIsbn(isbn)
-    .then(resp => dispatch(setSelectedBook(resp)))
+    return GoogleBooksAdapter.searchById(id)
+    .then(resp => dispatch(setSelectedBook(resp.items[0])))
   }
 }

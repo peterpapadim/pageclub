@@ -18,6 +18,7 @@ class SessionAdapter {
   }
 
   static create(credentials) {
+    credentials.email = credentials.email.toLowerCase()
     const request = new Request('http://localhost:3000/api/v1/users', {
       method: 'POST',
       headers: new Headers({

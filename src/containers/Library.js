@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import Navbar from '../containers/Navbar';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchLibrary } from '../actions/libraryActions';
 
 class Library extends Component {
+
+  componentDidMount(){
+    this.props.fetchLibrary()
+  }
+
   render(){
+    console.log(this.props.library)
     return(
       <div className="container-fluid">
           <div className="row" >
@@ -16,8 +25,16 @@ class Library extends Component {
             </div>
           </div>
      </div>
-    )
+   )
   }
 }
 
-export default Library;
+function mapStateToProps(state){
+  return { library: state.library }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ fetchLibrary }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Library);
