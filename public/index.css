@@ -54,7 +54,7 @@
 
 #library-container {
   text-align: center;
-  background: lightpink;
+  /*background: lightpink;*/
 }
 
 #checked-out-container {
@@ -248,7 +248,6 @@ button:hover {
 
 #back-to-results:hover{
   color: #394f83;
-  font-weight: bold;
 }
 
 #basic-book-info{

@@ -4,12 +4,16 @@ import Navbar from '../containers/Navbar';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchById, clearSelectedBook } from '../actions/selectedActions';
+import { fetchLibrary, clearLibrary } from '../actions/libraryActions';
 import BookAdapter from '../adapters/BookAdapter';
 
 class Book extends Component {
 
+
   componentWillMount(){
-    this.props.fetchById(this.props.history.match.params.term)
+    let bookId = this.props.history.match.params.id
+    this.props.fetchById(bookId)
+    this.props.fetchLibrary(JSON.parse(sessionStorage.user).id)
   }
 
   componentWillReceiveProps(nextProps){
@@ -21,10 +25,15 @@ class Book extends Component {
 
   componentWillUnmount(){
     this.props.clearSelectedBook()
+    this.props.clearLibrary()
   }
 
   showLoader = () => {
     return <Loader active inline='centered' size='large'>Loading Sample</Loader>
+  }
+
+  showButtonLoader = () => {
+    return <div><br /><Loader active inline='centered' size='small' /></div>
   }
 
   handleBackClick = (event) => {
@@ -34,6 +43,31 @@ class Book extends Component {
 
   handleAddToLibrary = () => {
     BookAdapter.create(this.props.selectedBook)
+    .then(resp => this.props.fetchLibrary(JSON.parse(sessionStorage.user).id))
+  }
+
+  handleDeleteFromLibrary = () => {
+    BookAdapter.destroy(this.props.selectedBook)
+    .then(resp => this.props.fetchLibrary(JSON.parse(sessionStorage.user).id))
+  }
+
+  checkLibrary = () => {
+    if(this.props.library){
+      for(let i = 0; i < this.props.library.length; i++){
+        if(this.props.library[i].book_info.id === this.props.selectedBook.id){
+          return <button id="add-to-library-button"
+                         className="btn btn-danger"
+                         onClick={this.handleDeleteFromLibrary}>
+                         Remove From Library
+                 </button>
+        }
+      }
+    }
+    return <button id="add-to-library-button"
+                   className="btn btn-success"
+                   onClick={this.handleAddToLibrary}>
+                   Add To Library
+           </button>
   }
 
   book = () => {
@@ -43,6 +77,7 @@ class Book extends Component {
 
 
   render(){
+    if(this.props.library){console.log(this.props.library)}
     return(
       <div className="container-fluid">
           <div className="row" >
@@ -56,13 +91,13 @@ class Book extends Component {
             <div id="book-details-container" className="col col-lg-8">
               <div className="row">
                 <div id="back-and-cover" className="col col-lg-5">
-                  <a id="back-to-results" href="search-results" onClick={this.handleBackClick}>Back to results</a><br/>
+                  <a id="back-to-results" href="search-results" onClick={this.handleBackClick}>Back</a><br/>
                   {
                     this.props.selectedBook ?
                     this.props.selectedBook.volumeInfo.imageLinks ?
                     <div id="cover-and-button">
                       <img id="book-cover" src={this.props.selectedBook.volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")} /><br />
-                      <button id="add-to-library-button" className="btn btn-success" onClick={this.handleAddToLibrary}>Add To Library</button>
+                      {this.props.library ? this.checkLibrary() : this.showButtonLoader()}
                     </div> :
                     <div id="cover-and-button">
                       <img id="book-cover" src="" /><br />
@@ -109,11 +144,19 @@ class Book extends Component {
 }
 
 function mapStateToProps(state){
-  return {selectedBook: state.selectedBook}
+  return {
+    selectedBook: state.selectedBook,
+    library: state.library
+  }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ fetchById, clearSelectedBook }, dispatch)
-}
+  return bindActionCreators({
+    fetchById,
+    clearSelectedBook,
+    fetchLibrary,
+    clearLibrary
+  }, dispatch
+)}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Book);

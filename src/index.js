@@ -52,7 +52,7 @@ ReactDOM.render(
         <Route path='/search-results/:term' component={(history) => (
             sessionStorage.jwt ? <Search history={history} /> : <Redirect to="/" />
           )}  />
-        <Route path='/books/:term' component={(history) => (
+        <Route path='/books/:id' component={(history) => (
             sessionStorage.jwt ? <Book history={history} /> : <Redirect to="/" />
           )}  />
         <Route path="/" component={Home} />
