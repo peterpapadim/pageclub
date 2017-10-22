@@ -31,10 +31,28 @@ class Library extends Component {
     return this.props.library.map((book) => {
       if(book.book_info.volumeInfo.imageLinks){
         let imgURL = book.book_info.volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")
-        return <img key={book.id} className="search-results" src={imgURL} onClick={() => this.handleResultClick(book)}/>
+        return <div className="library-list">
+                 <div>
+                   <img key={book.book_info.id}
+                      className="search-results"
+                      src={imgURL}
+                      onClick={() => this.handleResultClick(book)}
+                      alt={book.title} />
+                  </div>
+                  <div>
+                    {
+                      book.checked_out ?
+                      <h4 id="checkout-unavailable">Checked Out</h4> :
+                      <h4 id="checkout-available">Available</h4>
+                    }
+                  </div>
+               </div>
+
       }
       else{
-        return <img key={book.id} className="search-results" src="" onClick={() => this.handleResultClick(book)}/>
+        return <img key={book.book_info.id}
+                    className="search-results"
+                    src="" onClick={() => this.handleResultClick(book)}/>
       }
     })
   }

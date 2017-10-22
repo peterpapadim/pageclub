@@ -283,6 +283,21 @@ button:hover {
 }
 
 
+/* Library Page */
+
+.library-list{
+  display: inline-block;
+  /*width: 250px;*/
+}
+
+#checkout-available{
+  color: green;
+}
+
+#checkout-unavailable{
+  color: red;
+}
+
 /*#book-cover {
   position: relative;
   top: 50%;

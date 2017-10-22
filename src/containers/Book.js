@@ -9,6 +9,13 @@ import BookAdapter from '../adapters/BookAdapter';
 
 class Book extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      addOrRemoveLoader: false
+    }
+  }
+
 
   componentWillMount(){
     let bookId = this.props.history.match.params.id
@@ -42,13 +49,17 @@ class Book extends Component {
   }
 
   handleAddToLibrary = () => {
+    this.setState({addOrRemoveLoader: true})
     BookAdapter.create(this.props.selectedBook)
     .then(resp => this.props.fetchLibrary(JSON.parse(sessionStorage.user).id))
+    .then(resp => this.setState({addOrRemoveLoader: false}))
   }
 
   handleDeleteFromLibrary = () => {
+    this.setState({addOrRemoveLoader: true})
     BookAdapter.destroy(this.props.selectedBook)
     .then(resp => this.props.fetchLibrary(JSON.parse(sessionStorage.user).id))
+    .then(resp => this.setState({addOrRemoveLoader: false}))
   }
 
   checkLibrary = () => {
@@ -86,7 +97,8 @@ class Book extends Component {
             </div>
           </div>
           {
-          this.props.selectedBook && this.props.selectedBook.totalItems === 0 ? <h2 className="no-search-results"> :( </h2> :
+            this.props.selectedBook && this.props.selectedBook.totalItems === 0 ?
+            <h2 className="no-search-results"> :( </h2> :
           <div id="book-page" className="row page-window">
             <div id="book-details-container" className="col col-lg-8">
               <div className="row">
@@ -94,15 +106,17 @@ class Book extends Component {
                   <a id="back-to-results" href="search-results" onClick={this.handleBackClick}>Back</a><br/>
                   {
                     this.props.selectedBook ?
-                    this.props.selectedBook.volumeInfo.imageLinks ?
-                    <div id="cover-and-button">
-                      <img id="book-cover" src={this.props.selectedBook.volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")} /><br />
-                      {this.props.library ? this.checkLibrary() : this.showButtonLoader()}
-                    </div> :
-                    <div id="cover-and-button">
-                      <img id="book-cover" src="" /><br />
-                      <button id="add-to-library-button" className="btn btn-success" onClick={this.handleAddToLibrary}>Add To Library</button>
-                    </div> :
+                      this.props.selectedBook.volumeInfo.imageLinks ?
+                      <div id="cover-and-button">
+                        <img id="book-cover" src={this.props.selectedBook.volumeInfo.imageLinks.thumbnail.replace("&edge=curl", "")} /><br />
+                        {
+                          this.state.addOrRemoveLoader ? this.showButtonLoader() :
+                          this.props.library ? this.checkLibrary() : this.showButtonLoader()
+                        }
+                      </div> :
+                      <div id="cover-and-button">
+                        <img id="book-cover" src="" /><br />
+                      </div> :
                     null
                   }
                 </div>
