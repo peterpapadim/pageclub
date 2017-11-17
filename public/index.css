@@ -172,6 +172,14 @@ button:hover {
 
 /*  Account Page:  */
 
+#profile-picture{
+  border-style: none;
+  width: 75px;
+  height: 75px;
+  border: 1px solid grey;
+  border-radius: 50px;
+}
+
 .card {
   margin-top: 15%;
 }

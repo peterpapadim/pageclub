@@ -54,6 +54,11 @@ class Account extends Component {
     this.setState({ deleteClicked: false })
   }
 
+  handleUpload = (event) => {
+    event.preventDefault()
+    console.log(document.getElementById('file-upload').files[0]);
+  }
+
   render(){
     return(
       <div className="container-fluid">
@@ -66,6 +71,11 @@ class Account extends Component {
             <div id="account-container" className="col-12">
               <div className="card" >
                 <div className="card-body">
+                    <img id="profile-picture" src="https://www.w3schools.com/css/paris.jpg" /><br/><br/>
+                      <form onSubmit={this.handleUpload}>
+                        <input type="file" id="file-upload"/><br/><br/>
+                        <input type="submit" value="upload"/>
+                      </form>
                   {
                     this.state.editClicked ? <h4><input id="name-edit-input" type="text" value={this.state.input} onChange={this.handleInputChange}/></h4> :
                     <h4 className="card-title">
